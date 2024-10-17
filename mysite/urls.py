@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('MyBlog.urls'))#link urls to urlls.py file from MyBlog folder
+    path('',include('MyBlog.urls'))#link urls to urls.py file from MyBlog folder
 ]
