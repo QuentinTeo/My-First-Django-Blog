@@ -13,6 +13,17 @@
             <time class="date">
                 published: {{ post.published_date }}
             </time>
+        {% else %}
+            <form method = "POST" action = "{% url 'post_publish' pk=post.pk %}" class = "post-form">{% csrf_token %}
+                <button type = "submit" class = "post bn-secondary" name = "publish">
+                    Publish
+                </button>
+            </form>
+            <form method = "POST" action = "{% url 'post_delete' pk=post.pk %}" class = "post-form">{% csrf_token %}
+                <button type = "submit" class = "post bn-secondary" name = "publish">
+                    Delete
+                </button>
+            </form>
         {% endif %}
         <h2>{{ post.title }}</h2>
         <p>{{ post.text | linebreaksbr }}</p>

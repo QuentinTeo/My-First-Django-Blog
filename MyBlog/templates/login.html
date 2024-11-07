@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if form.errors %}
+        <p>Your Username and Password didn't quite match, Please try again</p>
+    {% endif %} 
+    <form method = "POST" actiom = "{% url 'login' %}">
+    {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form. }}</td>
+            </tr>
+            <tr>Password</tr>
+        </table>
+
+    </form>
+
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Post
 from .forms import PostForm
@@ -40,3 +41,19 @@ def post_edit(request, pk):
     else :
         form = PostForm(instance = post)
     return render(request, 'MyBlog/post_edit.html', {'form':form})
+
+def draft_post_list(request):
+    post = Post.objects.filter(published_date__is_null=True).order_by('created_date')
+    return render(request, 'MyBlog/draft_post_list.html', {'post':post})
+
+def post_published(request, pk):
+    post = get_object_or_404(post, pk = pk)
+    if request.method == 'POST':
+        post.publish()
+    return redirect('post_detail', pk = pk )
+
+def post_delete(request, pk):
+    post = get_object_or_404(pk = post.pk)
+    if request.method == 'POST':
+        post.delete()
+    return redirect('post_detail', pk = post.pk)

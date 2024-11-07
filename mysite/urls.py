@@ -19,5 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/login/', views.LoginView.as_view(), name='login'),#login account implementation for extra security
     path('',include('MyBlog.urls'))#link urls to urls.py file from MyBlog folder
+    
 ]

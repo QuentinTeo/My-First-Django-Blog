@@ -14,8 +14,6 @@ db.sqlite3
 # Static folder at project root
 /static/
 
-
-
 # Windows
 Thumbs.db*
 ehthumbs*.db
